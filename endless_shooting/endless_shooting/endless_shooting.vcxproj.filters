@@ -1,17 +1,233 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="ヘッダー ファイル">
+    <Filter Include="01_Resource">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="03_Debug">
+      <UniqueIdentifier>{2a3e0a72-0c88-4b6a-81a4-66faeb75aefd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02_Input">
+      <UniqueIdentifier>{e620aab4-24a1-412d-bb80-e0a2ad105c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Mode">
+      <UniqueIdentifier>{763b5a5c-f608-4e41-9677-74b60f24d750}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_Character">
+      <UniqueIdentifier>{d1e18487-c43b-46ff-9ba7-721431ee7e19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_Scene">
+      <UniqueIdentifier>{8f3705b2-e2bc-4ecd-a55c-10afb3d96252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Effect">
+      <UniqueIdentifier>{f6f281ba-ec77-42fa-828f-d2c5a0f286bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Ui">
+      <UniqueIdentifier>{b0916c62-d2ce-404e-b097-a5d14f54add8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09_Attack">
+      <UniqueIdentifier>{10c53226-0b90-4a16-864c-d1dc5378f4e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00_Important">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="sound.h">
+      <Filter>01_Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>00_Important</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>02_Input</Filter>
+    </ClInclude>
+    <ClInclude Include="manager.h">
+      <Filter>00_Important</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
+      <Filter>00_Important</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>04_Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="result.h">
+      <Filter>04_Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>04_Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>05_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>05_Character</Filter>
+    </ClInclude>
+    <ClInclude Include="fade.h">
+      <Filter>07_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="effect.h">
+      <Filter>07_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="explosion.h">
+      <Filter>07_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="bullet.h">
+      <Filter>09_Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="bulletUI.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="comboUI.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="combobonus.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="combobonusUI.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="combo.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="bg.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>06_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="scene2d.h">
+      <Filter>06_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="speed.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ui.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="hiscore.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="number.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="pause.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ranking.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="score.h">
+      <Filter>08_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>00_Important</Filter>
+    </ClInclude>
+    <ClInclude Include="titlelogo.h">
+      <Filter>07_Effect</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>00_Important</Filter>
+    </ClCompile>
+    <ClCompile Include="manager.cpp">
+      <Filter>00_Important</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>00_Important</Filter>
+    </ClCompile>
+    <ClCompile Include="number.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="bullet.cpp">
+      <Filter>09_Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="combobonusUI.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="bulletUI.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="comboUI.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="scene2d.cpp">
+      <Filter>06_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>06_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>02_Input</Filter>
+    </ClCompile>
+    <ClCompile Include="titleogo.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="pause.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ui.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="explosion.cpp">
+      <Filter>07_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="effect.cpp">
+      <Filter>07_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="speed.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="score.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="sound.cpp">
+      <Filter>01_Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="title.cpp">
+      <Filter>04_Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>04_Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>05_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="fade.cpp">
+      <Filter>07_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="hiscore.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="result.cpp">
+      <Filter>04_Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="bg.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ranking.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="combo.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="combobonus.cpp">
+      <Filter>08_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>05_Character</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>00_Important</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
