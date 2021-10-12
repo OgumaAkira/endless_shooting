@@ -20,8 +20,8 @@ LPDIRECT3DTEXTURE9	CPlayer::m_pTexture = NULL;		//テクスチャの情報
 //*****************************************************************************
 CPlayer::CPlayer(int nPriority) :CScene2D(nPriority)
 {
-	m_pos = VECTOR_DEFAULT;				// ポリゴンの位置
-	m_size = VECTOR_DEFAULT;				// ポリゴン大きさ
+	m_pos = VECTOR3_DEFAULT;				// ポリゴンの位置
+	m_size = VECTOR3_DEFAULT;				// ポリゴン大きさ
 	m_nColor = 0;								// ポリゴンの色
 }
 

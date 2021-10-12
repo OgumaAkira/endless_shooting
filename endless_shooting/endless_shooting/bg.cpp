@@ -28,9 +28,9 @@ LPDIRECT3DTEXTURE9	CBg::m_pTexture[MAX_BG_TEXTURE] = {};		//テクスチャの情報
 //*****************************************************************************
 CBg::CBg(int nPriority) :CScene(nPriority)
 {
-	m_move = VECTOR_DEFAULT;				//移動量
-	m_pos = VECTOR_DEFAULT;			// ポリゴンの位置
-	m_size = VECTOR_DEFAULT;			// ポリゴン大きさ
+	m_move = VECTOR3_DEFAULT;				//移動量
+	m_pos = VECTOR3_DEFAULT;			// ポリゴンの位置
+	m_size = VECTOR3_DEFAULT;			// ポリゴン大きさ
 	m_nCounterAnim = 0;
 	m_nPatternAnim = 0;//アニメーションパターンNo.
 	for (int nCount = 0; nCount < MAX_BG_TEXTURE; nCount++)

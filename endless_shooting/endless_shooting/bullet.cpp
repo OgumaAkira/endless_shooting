@@ -34,9 +34,9 @@ CBulletUI				*CBullet::m_pBulletUI = NULL;	//残弾のポインタ
 //*****************************************************************************
 CBullet::CBullet()
 {
-	m_pos = VECTOR_DEFAULT;			//位置
-	m_size = VECTOR_DEFAULT;			//大きさ
-	m_move = VECTOR_DEFAULT;			//移動量
+	m_pos = VECTOR3_DEFAULT;			//位置
+	m_size = VECTOR3_DEFAULT;			//大きさ
+	m_move = VECTOR3_DEFAULT;			//移動量
 	m_nHP = 0;
 }
 

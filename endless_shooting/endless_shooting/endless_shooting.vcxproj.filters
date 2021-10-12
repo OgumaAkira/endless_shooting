@@ -113,9 +113,6 @@
     <ClInclude Include="hiscore.h">
       <Filter>08_Ui</Filter>
     </ClInclude>
-    <ClInclude Include="number.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
     <ClInclude Include="pause.h">
       <Filter>08_Ui</Filter>
     </ClInclude>
@@ -131,6 +128,12 @@
     <ClInclude Include="titlelogo.h">
       <Filter>07_Effect</Filter>
     </ClInclude>
+    <ClInclude Include="number.h">
+      <Filter>06_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="scenebase.h">
+      <Filter>06_Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -141,9 +144,6 @@
     </ClCompile>
     <ClCompile Include="renderer.cpp">
       <Filter>00_Important</Filter>
-    </ClCompile>
-    <ClCompile Include="number.cpp">
-      <Filter>08_Ui</Filter>
     </ClCompile>
     <ClCompile Include="bullet.cpp">
       <Filter>09_Attack</Filter>
@@ -228,6 +228,12 @@
     </ClCompile>
     <ClCompile Include="texture.cpp">
       <Filter>00_Important</Filter>
+    </ClCompile>
+    <ClCompile Include="number.cpp">
+      <Filter>06_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="scenebase.cpp">
+      <Filter>06_Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

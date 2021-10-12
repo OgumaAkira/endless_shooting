@@ -28,8 +28,8 @@ LPDIRECT3DTEXTURE9	CButton::m_apTexture[BUTTONTYPE_MAX] = {};	//テクスチャの情報
 //*****************************************************************************
 CButton::CButton(int nPriority) :CScene2D(nPriority)
 {
-	m_pos = VECTOR_DEFAULT;			// ボタンの位置
-	m_size = VECTOR_DEFAULT;			// ポリゴン大きさ
+	m_pos = VECTOR3_DEFAULT;			// ボタンの位置
+	m_size = VECTOR3_DEFAULT;			// ポリゴン大きさ
 	m_bButton = false;
 	m_state = BUTTONSTATE_NORMAL;
 }

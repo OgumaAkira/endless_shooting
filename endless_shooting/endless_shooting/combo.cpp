@@ -27,9 +27,9 @@
 //*****************************************************************************
 CCombo::CCombo(int nPriority) :CScene(nPriority)
 {
-	m_move = VECTOR_DEFAULT;			//移動量
-	m_pos = VECTOR_DEFAULT;			// ポリゴンの位置
-	m_size = VECTOR_DEFAULT;			// ポリゴン大きさ
+	m_move = VECTOR3_DEFAULT;			//移動量
+	m_pos = VECTOR3_DEFAULT;			// ポリゴンの位置
+	m_size = VECTOR3_DEFAULT;			// ポリゴン大きさ
 	m_nColor = 0;							//色数値
 	m_nCombo = 0;							//コンボ数
 	m_nComboScore = 0;						//コンボスコア値

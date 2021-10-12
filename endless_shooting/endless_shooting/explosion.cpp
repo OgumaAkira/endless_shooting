@@ -115,7 +115,7 @@ void CExplosion::Update(void)
 	D3DXVECTOR3 size = GetSize();				//更新サイズを取得
 	
 	CScene2D::Update();
-	CScene2D::AnimationTexture(OBJTYPE::OBJTYPE_EXPLOSION, EXPLOSION_PATTERNANIM, EXPLOSION_COUNTERANIM);
+	CScene2D::InitAnimation(OBJTYPE::OBJTYPE_EXPLOSION, EXPLOSION_PATTERNANIM, EXPLOSION_COUNTERANIM);
 }
 //*****************************************************************************
 //描画関数

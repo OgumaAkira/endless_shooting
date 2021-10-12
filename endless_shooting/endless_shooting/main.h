@@ -65,7 +65,12 @@
 #define NUMBER_TEXTURE ("data/TEXTURE/number_HGM.png")					//ナンバーのテクスチャ
 #define COMBOBONUS_TEXTURE ("data/TEXTURE/COMBO_BONUS.png")					//コンボボーナスのテクスチャ
 
-#define VECTOR_DEFAULT		(D3DXVECTOR3(0, 0, 0))//デフォルトベクター
+#define VECTOR3_DEFAULT		(D3DXVECTOR3(0.0f, 0.0f, 0.0f))//デフォルトベクター
+#define ZeroVector2			(D3DXVECTOR2(0.0f, 0.0f))
+#define ZeroVector3			(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
+#define WhiteColor			(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f))
+#define BlackColor			(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f))
+
 //ボタンマクロ
 #define BUTTON_POSX (940.0f)//ボタンのXの長さ
 #define BUTTON_POSY (800.0f)//ボタンのYの長さ

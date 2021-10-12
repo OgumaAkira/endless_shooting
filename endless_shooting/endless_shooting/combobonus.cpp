@@ -28,9 +28,9 @@ int			CComboBonus::m_nScore = 0;
 //*****************************************************************************
 CComboBonus::CComboBonus(int nPriority) :CScene(nPriority)
 {
-	m_move = VECTOR_DEFAULT;			//移動量
-	m_pos = VECTOR_DEFAULT;			// ポリゴンの位置
-	m_size = VECTOR_DEFAULT;			// ポリゴン大きさ
+	m_move = VECTOR3_DEFAULT;			//移動量
+	m_pos = VECTOR3_DEFAULT;			// ポリゴンの位置
+	m_size = VECTOR3_DEFAULT;			// ポリゴン大きさ
 	m_nScore = 0;							//スコア
 	for (int nCount = 0; nCount < MAX_COMBOBONUS_NUMBER; nCount++)
 	{
