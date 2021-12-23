@@ -33,6 +33,24 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="08_Ui\Button">
+      <UniqueIdentifier>{b6d79e6f-94c6-4eeb-9635-f3fe6296762c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Ui\combo">
+      <UniqueIdentifier>{a3a7f407-b302-43f3-9b2f-a89ee0bb80f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Ui\Score">
+      <UniqueIdentifier>{c4f18aac-8d3f-431b-877a-a79b6551b859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Mode\Title">
+      <UniqueIdentifier>{6116a190-1903-489b-b630-05be616ea637}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Mode\Game">
+      <UniqueIdentifier>{787c74e5-8607-49d3-8390-916b7030c607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Mode\Result">
+      <UniqueIdentifier>{ca11bf73-a860-4ca6-9616-0969b49c64ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sound.h">
@@ -49,15 +67,6 @@
     </ClInclude>
     <ClInclude Include="renderer.h">
       <Filter>00_Important</Filter>
-    </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>04_Mode</Filter>
-    </ClInclude>
-    <ClInclude Include="result.h">
-      <Filter>04_Mode</Filter>
-    </ClInclude>
-    <ClInclude Include="title.h">
-      <Filter>04_Mode</Filter>
     </ClInclude>
     <ClInclude Include="enemy.h">
       <Filter>05_Character</Filter>
@@ -80,21 +89,6 @@
     <ClInclude Include="bulletUI.h">
       <Filter>08_Ui</Filter>
     </ClInclude>
-    <ClInclude Include="comboUI.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
-    <ClInclude Include="combobonus.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
-    <ClInclude Include="combobonusUI.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
-    <ClInclude Include="combo.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
-    <ClInclude Include="button.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
     <ClInclude Include="bg.h">
       <Filter>08_Ui</Filter>
     </ClInclude>
@@ -110,29 +104,59 @@
     <ClInclude Include="ui.h">
       <Filter>08_Ui</Filter>
     </ClInclude>
-    <ClInclude Include="hiscore.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
-    <ClInclude Include="pause.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
     <ClInclude Include="ranking.h">
       <Filter>08_Ui</Filter>
-    </ClInclude>
-    <ClInclude Include="score.h">
-      <Filter>08_Ui</Filter>
-    </ClInclude>
-    <ClInclude Include="texture.h">
-      <Filter>00_Important</Filter>
-    </ClInclude>
-    <ClInclude Include="titlelogo.h">
-      <Filter>07_Effect</Filter>
     </ClInclude>
     <ClInclude Include="number.h">
       <Filter>06_Scene</Filter>
     </ClInclude>
     <ClInclude Include="scenebase.h">
       <Filter>06_Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="resource_manager.h">
+      <Filter>01_Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>08_Ui\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="combo.h">
+      <Filter>08_Ui\combo</Filter>
+    </ClInclude>
+    <ClInclude Include="combobonusUI.h">
+      <Filter>08_Ui\combo</Filter>
+    </ClInclude>
+    <ClInclude Include="combobonus.h">
+      <Filter>08_Ui\combo</Filter>
+    </ClInclude>
+    <ClInclude Include="comboUI.h">
+      <Filter>08_Ui\combo</Filter>
+    </ClInclude>
+    <ClInclude Include="score.h">
+      <Filter>08_Ui\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="hiscore.h">
+      <Filter>08_Ui\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>01_Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="mode_base.h">
+      <Filter>04_Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="mode.h">
+      <Filter>04_Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>04_Mode\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="result.h">
+      <Filter>04_Mode\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>04_Mode\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="pause.h">
+      <Filter>04_Mode\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -148,13 +172,7 @@
     <ClCompile Include="bullet.cpp">
       <Filter>09_Attack</Filter>
     </ClCompile>
-    <ClCompile Include="combobonusUI.cpp">
-      <Filter>08_Ui</Filter>
-    </ClCompile>
     <ClCompile Include="bulletUI.cpp">
-      <Filter>08_Ui</Filter>
-    </ClCompile>
-    <ClCompile Include="comboUI.cpp">
       <Filter>08_Ui</Filter>
     </ClCompile>
     <ClCompile Include="scene2d.cpp">
@@ -165,15 +183,6 @@
     </ClCompile>
     <ClCompile Include="input.cpp">
       <Filter>02_Input</Filter>
-    </ClCompile>
-    <ClCompile Include="titleogo.cpp">
-      <Filter>08_Ui</Filter>
-    </ClCompile>
-    <ClCompile Include="button.cpp">
-      <Filter>08_Ui</Filter>
-    </ClCompile>
-    <ClCompile Include="pause.cpp">
-      <Filter>08_Ui</Filter>
     </ClCompile>
     <ClCompile Include="ui.cpp">
       <Filter>08_Ui</Filter>
@@ -187,17 +196,8 @@
     <ClCompile Include="speed.cpp">
       <Filter>08_Ui</Filter>
     </ClCompile>
-    <ClCompile Include="score.cpp">
-      <Filter>08_Ui</Filter>
-    </ClCompile>
     <ClCompile Include="sound.cpp">
       <Filter>01_Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="title.cpp">
-      <Filter>04_Mode</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>04_Mode</Filter>
     </ClCompile>
     <ClCompile Include="enemy.cpp">
       <Filter>05_Character</Filter>
@@ -205,35 +205,62 @@
     <ClCompile Include="fade.cpp">
       <Filter>07_Effect</Filter>
     </ClCompile>
-    <ClCompile Include="hiscore.cpp">
-      <Filter>08_Ui</Filter>
-    </ClCompile>
-    <ClCompile Include="result.cpp">
-      <Filter>04_Mode</Filter>
-    </ClCompile>
     <ClCompile Include="bg.cpp">
       <Filter>08_Ui</Filter>
     </ClCompile>
     <ClCompile Include="ranking.cpp">
       <Filter>08_Ui</Filter>
     </ClCompile>
-    <ClCompile Include="combo.cpp">
-      <Filter>08_Ui</Filter>
-    </ClCompile>
-    <ClCompile Include="combobonus.cpp">
-      <Filter>08_Ui</Filter>
-    </ClCompile>
     <ClCompile Include="player.cpp">
       <Filter>05_Character</Filter>
-    </ClCompile>
-    <ClCompile Include="texture.cpp">
-      <Filter>00_Important</Filter>
     </ClCompile>
     <ClCompile Include="number.cpp">
       <Filter>06_Scene</Filter>
     </ClCompile>
     <ClCompile Include="scenebase.cpp">
       <Filter>06_Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="resource_manager.cpp">
+      <Filter>01_Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>08_Ui\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="combobonus.cpp">
+      <Filter>08_Ui\combo</Filter>
+    </ClCompile>
+    <ClCompile Include="combo.cpp">
+      <Filter>08_Ui\combo</Filter>
+    </ClCompile>
+    <ClCompile Include="combobonusUI.cpp">
+      <Filter>08_Ui\combo</Filter>
+    </ClCompile>
+    <ClCompile Include="comboUI.cpp">
+      <Filter>08_Ui\combo</Filter>
+    </ClCompile>
+    <ClCompile Include="score.cpp">
+      <Filter>08_Ui\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="hiscore.cpp">
+      <Filter>08_Ui\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>01_Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="mode.cpp">
+      <Filter>04_Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>04_Mode\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="result.cpp">
+      <Filter>04_Mode\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="title.cpp">
+      <Filter>04_Mode\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="pause.cpp">
+      <Filter>04_Mode\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

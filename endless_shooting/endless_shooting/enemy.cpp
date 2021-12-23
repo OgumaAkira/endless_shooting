@@ -88,14 +88,14 @@ void CEnemy::UnLoad(void)
 //*****************************************************************************
 HRESULT CEnemy::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size, ENEMYTYPE nType)
 {
-	CScene2D::Init();
+	CScene2D::Init(pos, size);
 	m_pos = D3DXVECTOR3(pos.x, pos.y, 0);		//位置
-	SetPosition(m_pos);							//位置格納
+	SetPos(m_pos);							//位置格納
 	m_size = D3DXVECTOR3(size.x, size.y, 0);	//大きさ
 	SetSize(m_size);							//大きさ格納
 	m_nHP = 1;									//ライフ
 	m_state = ENEMYSTATE_NORMAL;				//状態
-	BirdTexture(m_apTexture[nType]);			//テクスチャの情報をscene2dに持ってく
+	//BirdTexture(m_apTexture[nType]);			//テクスチャの情報をscene2dに持ってく
 	return S_OK;
 }
 
@@ -112,8 +112,7 @@ void CEnemy::Uninit(void)
 //*****************************************************************************
 void CEnemy::Update(void)
 {
-	m_pos = GetPosition();						//更新位置を取得
-	CSound *pSound = CManager::GetSound();		//サウンド取得
+	m_pos = GetPos();						//更新位置を取得
 	CScene2D::Update();							//シーンの更新
 	int nCountEnemy = 1;						//敵の数
 
@@ -128,21 +127,17 @@ void CEnemy::Update(void)
 	{
 	//通常
 	case ENEMYSTATE_NORMAL:
-		SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));			//色の設定
 		break;
 
 		//敵が倒された時
 	case ENEMYRSTATE_DEATH:
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);	//サウンド
-		CExplosion::Create(m_pos, D3DXVECTOR3(300, 300, 0));						//爆発演出
-		Uninit();
-		CGame::SetGameState(CGame::GAMESTATE_ENEMYBREAK);		//ゲームの状態
+
 		break;
 
 	default:
 		break;
 	}
-	SetPosition(m_pos);											//プレイヤーの位置更新
+	SetPos(m_pos);											//プレイヤーの位置更新
 }
 
 //*****************************************************************************

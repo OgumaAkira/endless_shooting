@@ -17,13 +17,13 @@
 //*****************************************************************************
 CSound::SOUNDPARAM CSound::m_aParam[SOUND_LABEL_MAX]=
 {
-	{ "data/SE/MusMus-BGM-052.wav", -1 },		// TITLEBGM
-	{ "data/SE/MusMus-BGM-012_1.wav", -1 },		// GAMEBGM1
-	{ "data/SE/buzz.wav",-1 },					// RESULTBGM2
-	{ "data/SE/shot000.wav", 0},				// 弾発射音
-	{ "data/SE/se7.wav", 0 },					// ボタン音
-	{ "data/SE/explosion000.wav", 0 },			// 爆発音
-	{ "data/SE/button36.wav", 0 },				// スピードアップ音
+	//{ "data/SE/MusMus-BGM-052.wav", -1 },		// TITLEBGM
+	//{ "data/SE/MusMus-BGM-012_1.wav", -1 },		// GAMEBGM1
+	//{ "data/SE/buzz.wav",-1 },					// RESULTBGM2
+	//{ "data/SE/shot000.wav", 0},				// 弾発射音
+	//{ "data/SE/se7.wav", 0 },					// ボタン音
+	//{ "data/SE/explosion000.wav", 0 },			// 爆発音
+	//{ "data/SE/button36.wav", 0 },				// スピードアップ音
 };
 
 //*****************************************************************************
@@ -45,9 +45,25 @@ CSound::~CSound()
 }
 
 //*****************************************************************************
+//インスタンス生成
+//*****************************************************************************
+CSound * CSound::Create(void)
+{
+	//メモリ確保
+	CSound *pSound = new CSound;
+
+	//!NULLチェック
+	if (pSound != nullptr)
+	{
+		//初期化処理
+		pSound->Init();
+	}
+	return pSound;
+}
+//*****************************************************************************
 //初期化関数
 //*****************************************************************************
-HRESULT CSound::InitSound(HWND hWnd)
+HRESULT CSound::Init()
 {
 	HRESULT hr;
 
@@ -58,7 +74,7 @@ HRESULT CSound::InitSound(HWND hWnd)
 	hr = XAudio2Create(&m_pXAudio2, 0);
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, "XAudio2オブジェクトの作成に失敗！", "警告！", MB_ICONWARNING);
+		//MessageBox(hWnd, "XAudio2オブジェクトの作成に失敗！", "警告！", MB_ICONWARNING);
 
 		// COMライブラリの終了処理
 		CoUninitialize();
@@ -70,7 +86,7 @@ HRESULT CSound::InitSound(HWND hWnd)
 	hr = m_pXAudio2->CreateMasteringVoice(&m_pMasteringVoice);
 	if (FAILED(hr))
 	{
-		MessageBox(hWnd, "マスターボイスの生成に失敗！", "警告！", MB_ICONWARNING);
+		//MessageBox(hWnd, "マスターボイスの生成に失敗！", "警告！", MB_ICONWARNING);
 
 		if (m_pXAudio2)
 		{
@@ -103,31 +119,31 @@ HRESULT CSound::InitSound(HWND hWnd)
 		hFile = CreateFile(m_aParam[nCntSound].pFilename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
 		if (hFile == INVALID_HANDLE_VALUE)
 		{
-			MessageBox(hWnd, "サウンドデータファイルの生成に失敗！(1)", "警告！", MB_ICONWARNING);
+			//MessageBox(hWnd, "サウンドデータファイルの生成に失敗！(1)", "警告！", MB_ICONWARNING);
 			return HRESULT_FROM_WIN32(GetLastError());
 		}
+		// ファイルポインタを先頭に移動
 		if (SetFilePointer(hFile, 0, NULL, FILE_BEGIN) == INVALID_SET_FILE_POINTER)
-		{// ファイルポインタを先頭に移動
-			MessageBox(hWnd, "サウンドデータファイルの生成に失敗！(2)", "警告！", MB_ICONWARNING);
+		{
+			//MessageBox(hWnd, "サウンドデータファイルの生成に失敗！(2)", "警告！", MB_ICONWARNING);
 			return HRESULT_FROM_WIN32(GetLastError());
 		}
-
 		// WAVEファイルのチェック
 		hr = CheckChunk(hFile, 'FFIR', &dwChunkSize, &dwChunkPosition);
 		if (FAILED(hr))
 		{
-			MessageBox(hWnd, "WAVEファイルのチェックに失敗！(1)", "警告！", MB_ICONWARNING);
+			//MessageBox(hWnd, "WAVEファイルのチェックに失敗！(1)", "警告！", MB_ICONWARNING);
 			return S_FALSE;
 		}
 		hr = ReadChunkData(hFile, &dwFiletype, sizeof(DWORD), dwChunkPosition);
 		if (FAILED(hr))
 		{
-			MessageBox(hWnd, "WAVEファイルのチェックに失敗！(2)", "警告！", MB_ICONWARNING);
+			//MessageBox(hWnd, "WAVEファイルのチェックに失敗！(2)", "警告！", MB_ICONWARNING);
 			return S_FALSE;
 		}
 		if (dwFiletype != 'EVAW')
 		{
-			MessageBox(hWnd, "WAVEファイルのチェックに失敗！(3)", "警告！", MB_ICONWARNING);
+			//MessageBox(hWnd, "WAVEファイルのチェックに失敗！(3)", "警告！", MB_ICONWARNING);
 			return S_FALSE;
 		}
 
@@ -135,13 +151,13 @@ HRESULT CSound::InitSound(HWND hWnd)
 		hr = CheckChunk(hFile, ' tmf', &dwChunkSize, &dwChunkPosition);
 		if (FAILED(hr))
 		{
-			MessageBox(hWnd, "フォーマットチェックに失敗！(1)", "警告！", MB_ICONWARNING);
+			//MessageBox(hWnd, "フォーマットチェックに失敗！(1)", "警告！", MB_ICONWARNING);
 			return S_FALSE;
 		}
 		hr = ReadChunkData(hFile, &wfx, dwChunkSize, dwChunkPosition);
 		if (FAILED(hr))
 		{
-			MessageBox(hWnd, "フォーマットチェックに失敗！(2)", "警告！", MB_ICONWARNING);
+			//MessageBox(hWnd, "フォーマットチェックに失敗！(2)", "警告！", MB_ICONWARNING);
 			return S_FALSE;
 		}
 
@@ -149,14 +165,14 @@ HRESULT CSound::InitSound(HWND hWnd)
 		hr = CheckChunk(hFile, 'atad', &m_aSizeAudio[nCntSound], &dwChunkPosition);
 		if (FAILED(hr))
 		{
-			MessageBox(hWnd, "オーディオデータ読み込みに失敗！(1)", "警告！", MB_ICONWARNING);
+			//MessageBox(hWnd, "オーディオデータ読み込みに失敗！(1)", "警告！", MB_ICONWARNING);
 			return S_FALSE;
 		}
 		m_apDataAudio[nCntSound] = (BYTE*)malloc(m_aSizeAudio[nCntSound]);
 		hr = ReadChunkData(hFile, m_apDataAudio[nCntSound], m_aSizeAudio[nCntSound], dwChunkPosition);
 		if (FAILED(hr))
 		{
-			MessageBox(hWnd, "オーディオデータ読み込みに失敗！(2)", "警告！", MB_ICONWARNING);
+			//MessageBox(hWnd, "オーディオデータ読み込みに失敗！(2)", "警告！", MB_ICONWARNING);
 			return S_FALSE;
 		}
 
@@ -164,7 +180,7 @@ HRESULT CSound::InitSound(HWND hWnd)
 		hr = m_pXAudio2->CreateSourceVoice(&m_apSourceVoice[nCntSound], &(wfx.Format));
 		if (FAILED(hr))
 		{
-			MessageBox(hWnd, "ソースボイスの生成に失敗！", "警告！", MB_ICONWARNING);
+			//sMessageBox(hWnd, "ソースボイスの生成に失敗！", "警告！", MB_ICONWARNING);
 			return S_FALSE;
 		}
 
@@ -188,7 +204,7 @@ HRESULT CSound::InitSound(HWND hWnd)
 //*****************************************************************************
 //終了関数
 //*****************************************************************************
-void CSound::UninitSound(void)
+void CSound::Uninit(void)
 {
 	// 一時停止
 	for (int nCntSound = 0; nCntSound < SOUND_LABEL_MAX; nCntSound++)
@@ -226,7 +242,7 @@ void CSound::UninitSound(void)
 //*****************************************************************************
 //再生関数
 //*****************************************************************************
-HRESULT CSound::PlaySound(SOUND_LABEL label)
+HRESULT CSound::Play(SOUND_LABEL label)
 {
 	XAUDIO2_VOICE_STATE xa2state;
 	XAUDIO2_BUFFER buffer;
@@ -259,9 +275,9 @@ HRESULT CSound::PlaySound(SOUND_LABEL label)
 }
 
 //*****************************************************************************
-//停止関数
+//セグメント停止（個別）
 //*****************************************************************************
-void CSound::StopSound(SOUND_LABEL label)
+void CSound::Stop(SOUND_LABEL label)
 {
 	XAUDIO2_VOICE_STATE xa2state;
 
@@ -278,9 +294,9 @@ void CSound::StopSound(SOUND_LABEL label)
 }
 
 //*****************************************************************************
-//一時停止関数
+//セグメント停止（全て）
 //*****************************************************************************
-void CSound::StopSoundTo(void)
+void CSound::StopAll(void)
 {
 	// 一時停止
 	for (int nCntSound = 0; nCntSound < SOUND_LABEL_MAX; nCntSound++)

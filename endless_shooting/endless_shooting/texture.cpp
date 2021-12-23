@@ -52,23 +52,7 @@ HRESULT CTexture::SetTextureName(void)
 	// 通常テクスチャ
 	m_aTexFileName[TEXTURE_TYPE_NUM_NORMAL] =
 	{
-		{ "data/TEXTURE/BULLET.png" },	//弾UI
-		{ "data/TEXTURE/敵　UFO１.png" },	//敵1
-		{ "data/TEXTURE/PAUSE_WINDOW.png" },	//ポーズウィンドウ
-		{ "data/TEXTURE/TITLE_RETURN.png" },	//タイトルリターンボタン
-		{ "data/TEXTURE/GAME_RETURN.png" },		//ゲームリターンボタン
-		{ "data/TEXTURE/GAMETITLE.png" },		//ゲームタイトル
-		{ "data/TEXTURE/TUTORIAL.png" },		//チュートリアル
-		{ "data/TEXTURE/HISCORE.png" },			//ハイスコア
-		{ "data/TEXTURE/YOURSCORE.png" },		//プレイヤーのスコア
-		{ "data/TEXTURE/SPEEDUP!.png" },		//スピードアップ
-		{ "data/TEXTURE/COMBO_BONUS.png" },		//コンボボーナス
-		{ "data/TEXTURE/bg100.png" },			//背景宇宙1
-		{ "data/TEXTURE/bg101.png" },			//背景宇宙2
-		{ "data/TEXTURE/bg102.png" },			//背景宇宙3
-		{ "data/TEXTURE/bullet000.png" },		//銃弾
-		{ "data/TEXTURE/SCORE.png" },			//スコア	
-		{ "data/TEXTURE/COMBO.png" }			//コンボ
+		{"data/TEXTURE/TargetMarker.png"},	//マーカー
 	};
 
 	// 分割テクスチャ

@@ -25,7 +25,7 @@ class CPlayer;
 class CEnemy;
 class CInput;
 class CButton;
-class BulletUI;
+class CBulletUI;
 class CCombo;
 
 //*****************************************************************************

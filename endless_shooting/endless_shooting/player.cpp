@@ -9,7 +9,8 @@
 //インクルードファイル
 //*****************************************************************************
 #include "player.h"
-
+#include "texture.h"
+#include "resource_manager.h"
 //*****************************************************************************
 //静的メンバ変数
 //*****************************************************************************
@@ -81,13 +82,14 @@ CPlayer * CPlayer::Create(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 //*****************************************************************************
 HRESULT CPlayer::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 {
-	CScene2D::Init();
+	LPDIRECT3DDEVICE9 pDevice = GET_RENDERER_DEVICE;
+	
+	CScene2D::Init(pos,size);
+	CTexture *pTexture = GET_TEXTURE_PTR;
 	m_pos = D3DXVECTOR3(pos.x,pos.y , 0);		//位置
-	SetPosition(pos);
 	m_size = D3DXVECTOR3(size.x, size.y, 0);	//大きさ
-	SetSize(size);
 	SetObjType(OBJTYPE_CURSOR);					//オブジェクト指定格納
-	BirdTexture(m_pTexture);					//テクスチャの情報をscene2dに持ってく
+	BindTexture(pTexture->GetTexture(CTexture::TEXTURE_NUM_PLAYER));					//テクスチャの情報
 	return S_OK;;
 }
 
@@ -113,7 +115,7 @@ void CPlayer::Update(void)
 	MarkerColor();														//マーカーの色変え
 	MarkerObject();														//マーカーのオブジェクト切り替え
 	PlayerInput();														
-	SetPosition(m_pos);													//プレイヤーの位置行進
+	SetPos(m_pos);													//プレイヤーの位置行進
 }
 
 //*****************************************************************************
@@ -148,9 +150,9 @@ void CPlayer::MarkerColor(void)
 					&& CGame::GetGameState() == CGame::GAMESTATE_NORMAL)
 				{
 					CEnemy *pEnemy = CManager::GetEnemy();						//敵の情報を取得
-					CScene2D *pScene2d = (CScene2D*)pScene;						//キャスト
-					D3DXVECTOR3 pos = pScene2d->GetPosition();					//位置を取得
-					D3DXVECTOR3 size = pScene2d->GetSize();						//大きさを取得
+					CSceneBase *pScene2d = (CSceneBase*)pScene;						//キャスト
+					D3DXVECTOR3 pos = GetPos();					//位置を取得
+					D3DXVECTOR3 size = GetSize();						//大きさを取得
 
 					//敵とマーカーの照準
 					if (pos.x - size.x / 2 <= m_pos.x&&
@@ -173,8 +175,8 @@ void CPlayer::MarkerColor(void)
 				{
 					CButton *pButton = CManager::GetButton();					//敵の情報を取得
 					CScene2D *pScene2d = (CScene2D*)pScene;						//キャスト
-					D3DXVECTOR3 pos = pScene2d->GetPosition();					//位置を取得
-					D3DXVECTOR3 size = pScene2d->GetSize();						//大きさを取得
+					D3DXVECTOR3 pos = GetPos();					//位置を取得
+					D3DXVECTOR3 size = GetSize();						//大きさを取得
 
 					//ボタンと照準があった時
 					if (pos.x - size.x / 2 <= m_pos.x&&
@@ -254,7 +256,7 @@ void CPlayer::PlayerInput(void)
 			//サウンド
 #if DEBUG_SOUND
 			CSound *pSound = CManager::GetSound();		//サウンド情報取得
-			pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+			pSound->Play(CSound::SOUND_LABEL_SE_SHOT);
 #endif // DEBUG_SOUND
 		}
 		//ゲーム画面以外でオブジェクトがカーソルかつフェード値が最大である場合

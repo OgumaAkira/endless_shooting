@@ -41,6 +41,14 @@ class CPause;
 class CComboBonus;
 class CComboBonusUI;
 class CEffect;
+class CResourceManager;
+class CModeBase;
+
+//*****************************************************************************
+// マクロ定義
+//*****************************************************************************
+#define GET_RENDERER_DEVICE (CManager::GetRenderer()->GetDevice())			//デバイスの取得
+#define GET_TEXTURE_PTR	(CManager::GetResourceManager()->GetTextureClass())	//テクスチャのポインタ
 
 //*****************************************************************************
 //オブジェクト2クラス宣言
@@ -86,6 +94,8 @@ public:
 	static MODE				GetMode(void)			{ return m_mode; }				//モード情報取得関数
 	static void				SetMode(MODE mode);
 
+	static CResourceManager *GetResourceManager(void) { return m_pResourceManager.get(); }	// リソースマネージャのポインタ
+
 private:
 	//メンバ変数
 	static CRenderer		*m_pRenderer;				//レンダラーのポインタ
@@ -113,6 +123,9 @@ private:
 	static CComboBonusUI	*m_pComboBonusUI;			//コンボボーナスUIのポインタ
 	static MODE				m_mode;						//モードの情報
 	CInput					*m_pInput;					//入力のポインタ
+
+	static unique_ptr<CResourceManager> m_pResourceManager;	// リソースマネージャのポインタ
+
 
 };
 #endif
