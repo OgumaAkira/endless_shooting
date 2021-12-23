@@ -88,12 +88,10 @@ void CExplosion::UnLoad(void)
 HRESULT CExplosion::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 {
 
-	CScene2D::Init();
+	CScene2D::Init(pos, size);
 	//弾の初期設定
-	SetPosition(pos);						//位置格納
-	SetSize(size);						//大きさ格納
-	SetTex(D3DXVECTOR2(1.0f, 1.0f),D3DXVECTOR2(0.125f , 1.0f));
-	BirdTexture(m_pTexture);				//テクスチャの情報をscene2dに持ってく
+	//SetTex(D3DXVECTOR2(1.0f, 1.0f),D3DXVECTOR2(0.125f , 1.0f));
+	//BirdTexture(m_pTexture);				//テクスチャの情報をscene2dに持ってく
 
 	return S_OK;
 }
@@ -111,7 +109,7 @@ void CExplosion::Uninit(void)
 //*****************************************************************************
 void CExplosion::Update(void)
 {
-	D3DXVECTOR3 pos = GetPosition();			//更新位置を取得
+	D3DXVECTOR3 pos = GetPos();			//更新位置を取得
 	D3DXVECTOR3 size = GetSize();				//更新サイズを取得
 	
 	CScene2D::Update();

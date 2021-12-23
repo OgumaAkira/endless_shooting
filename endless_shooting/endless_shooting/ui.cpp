@@ -9,8 +9,9 @@
 //インクルードファイル
 //*****************************************************************************
 #include "ui.h"
+#include "texture.h"
 #include "sound.h"
-
+#include "resource_manager.h"
 
 //*****************************************************************************
 //静的メンバ変数
@@ -103,12 +104,14 @@ void CUi::UnLoad(void)
 //*****************************************************************************
 HRESULT CUi::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size, UITYPE nType)
 {
-	CScene2D::Init();
-	m_pos = D3DXVECTOR3(pos.x, pos.y, 0);	//位置
-	SetPosition(m_pos);
-	m_size = D3DXVECTOR3(size.x, size.y, 0);	//大きさ
-	SetSize(m_size);
-	BirdTexture(m_apTexture[nType]);		//テクスチャの情報をscene2dに持ってく
+	LPDIRECT3DDEVICE9 pDevice = GET_RENDERER_DEVICE;
+
+	//テクスチャのポインタ
+	CTexture *pTexture = GET_TEXTURE_PTR;
+	CScene2D::Init(pos, size);
+	//サウンド取得
+	CSound *pSound = CManager::GetSound();
+	BindTexture(pTexture->GetTexture(CTexture::TEXTURE_NUM_PLAYER));					//テクスチャの情報
 	return S_OK;
 }
 
@@ -125,10 +128,8 @@ void CUi::Uninit(void)
 //*****************************************************************************
 void CUi::Update(void)
 {
-	m_pos = GetPosition();	//位置を取得
+	m_pos = GetPos();	//位置を取得
 
-	//サウンド取得
-	CSound *pSound = CManager::GetSound();
 	CScene2D::Update();
 }
 

@@ -52,13 +52,8 @@ CEffect * CEffect::Create(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXCOLOR col, D3DX
 		pEffect = new CEffect;
 		if (type == 1)
 		{	
-				pEffect->Smoke(pos, size/2, move, col);
+				pEffect->Smoke(pos, size, move, col);
 		}		
-		//else if (type == 1)
-		//{
-		//	pEffect->Smoke(pos, size / 2, move, col);
-		//}
-		pEffect->Init();
 		pEffect->SetObjType(OBJTYPE_EFFECT);	//オブジェクト指定
 	}
 	return pEffect;
@@ -72,14 +67,14 @@ void CEffect::Smoke(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 move, D3DXCOL
 
 		//エフェクトの設定
 		float fAngle = (rand() % 314 / 100.0f)*(rand() % 100);	//角度計算
-		D3DXVECTOR3 actualMove = D3DXVECTOR3((float)sin(fAngle)*move.x, (float)cos(fAngle)*move.y, 0.0f);//移動方向をセット
+		D3DXVECTOR3 actualMove = D3DXVECTOR3((float)sin(fAngle)*move.x,
+											(float)cos(fAngle)*move.y, 0.0f);//移動方向をセット
 		//爆発の初期設定
-		SetPosition(pos);					//位置格納
-		SetSize(size);						//大きさ格納
+
 		m_move = actualMove;				//移動量
 		SetColor(col);						//色格納
-		BirdTexture(m_pTexture);			//テクスチャの情報をscene2dに持ってく
-
+		//BirdTexture(m_pTexture);			//テクスチャの情報をscene2dに持ってく
+		Init(pos, size);
 }
 
 //*****************************************************************************
@@ -90,14 +85,13 @@ void CEffect::ClickEffect(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 move, D
 
 	//エフェクトの設定
 	float fAngle = (rand() % 314 / 100.0f)*(rand() % 100);	//角度計算
-	D3DXVECTOR3 actualMove = -D3DXVECTOR3((float)sin(fAngle)*move.x, (float)cos(fAngle)*move.y, 0.0f);//移動方向をセット
-							 //弾の初期設定
-	SetPosition(pos);					//位置格納
-	SetSize(size);						//大きさ格納
+	D3DXVECTOR3 actualMove = -D3DXVECTOR3((float)sin(fAngle)*move.x, 
+										(float)cos(fAngle)*move.y, 0.0f);//移動方向をセット
+	//弾の初期設定
 	m_move = actualMove;				//移動量
 	SetColor(col);						//色格納
-	BirdTexture(m_pTexture);			//テクスチャの情報をscene2dに持ってく
-
+	//BirdTexture(m_pTexture);			//テクスチャの情報をscene2dに持ってく
+	Init(pos, size);
 }
 //*****************************************************************************
 //読み込み関数
@@ -126,9 +120,9 @@ void CEffect::UnLoad(void)
 //*****************************************************************************
 //初期化関数
 //*****************************************************************************
-HRESULT CEffect::Init(void)
+HRESULT CEffect::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 {
-	CScene2D::Init();
+	CScene2D::Init(pos, size);
 	return S_OK;
 }
 
@@ -145,17 +139,14 @@ void CEffect::Uninit(void)
 //*****************************************************************************
 void CEffect::Update(void)
 {
-	D3DXVECTOR3 pos = GetPosition();			//更新位置を取得
+	D3DXVECTOR3 pos = GetPos();			//更新位置を取得
 	D3DXVECTOR3 size = GetSize();				//更新サイズを取得
 	D3DXCOLOR	col = GetColor();				//更新カラーを取得
 
 	pos += m_move;		//移動量をプラスする
 	col -= D3DXCOLOR(0, EFFECT_ALPHATHIN, EFFECT_ALPHATHIN, EFFECT_ALPHATHIN);
-
-	//アニメーション関数
-	//CScene2D::AnimationTexture(OBJTYPE::OBJTYPE_EFFECT, EFFECT_PATTERNANIM, EFFECT_COUNTERANIM);
 	
-	SetPosition(pos);	//位置格納
+	SetPos(pos);	//位置格納
 	SetSize(size);		//サイズ格納
 	SetColor(col);		//カラー格納
 

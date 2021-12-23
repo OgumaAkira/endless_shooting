@@ -19,7 +19,11 @@
 #include <dinput.h>
 #include <vector>
 #include <stdlib.h>
-
+#include <memory>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <algorithm>
 //*****************************************************************************
 // ライブラリファイルのリンク
 //*****************************************************************************
@@ -39,7 +43,6 @@
 #define FVF_VERTEX_2D (D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX1)
 #define NUM_VERTEX (4)													//頂点数
 #define NUM_POLYGON (2)													//ポリゴン数
-#define PRIORITY_MAX (15)												//優先順位
 #define NUM_KEY_MAX (256)												//キーボードの最大数
 #define NUM_MOUSE_MAX (4)												//マウスキーの最大数
 #define BULLET_SIZEX (150.0f)											//弾Xの長さ

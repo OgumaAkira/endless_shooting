@@ -96,7 +96,7 @@ CBg * CBg::Create()
 	//背景のポインタが何も無かった場合
 	if (pBg == NULL)
 	{
-		pBg = new CBg;
+		//pBg = new CBg;
 		pBg->Init();
 	}
 		return pBg;
@@ -115,10 +115,8 @@ HRESULT CBg::Init()
 		if (m_apScene2D[nCntInit] == NULL)
 		{
 			m_apScene2D[nCntInit] = new CScene2D;
-			m_apScene2D[nCntInit]->Init();
-			m_apScene2D[nCntInit]->SetPosition(D3DXVECTOR3(SCREEN_WIDTH/2 , SCREEN_HEIGHT/2 ,0));
-			m_apScene2D[nCntInit]->SetSize(D3DXVECTOR3(SCREEN_WIDTH , SCREEN_HEIGHT , 0));
-			m_apScene2D[nCntInit]->BirdTexture(m_pTexture[nCntInit]);
+			m_apScene2D[nCntInit]->Init(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0), D3DXVECTOR3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
+			//m_apScene2D[nCntInit]->BirdTexture(m_pTexture[nCntInit]);
 			m_apScene2D[nCntInit]->SetObjType(OBJTYPE_BG);
 		}
 	}
@@ -155,30 +153,27 @@ void CBg::Update(void)
 	
 	case CManager::MODE_GAME:
 	//背景のテクスチャ座標設定
-	for (int nCntUninit = 0; nCntUninit < MAX_BG_TEXTURE; nCntUninit++)
+	for (int nCntUpdate = 0; nCntUpdate < MAX_BG_TEXTURE; nCntUpdate++)
 	{
-		if (m_apScene2D[nCntUninit] != NULL)
+		if (m_apScene2D[nCntUpdate] != NULL)
 		{
 			
-			m_move += D3DXVECTOR3(0.001f , 0, 0);//移動量
+			m_move += D3DXVECTOR3(0.001f , 0.0f, 0.0f);//移動量
 			//背景をm_nPatternAnimで数を動かしてアニメーションする。
-			m_apScene2D[nCntUninit]->SetTex(D3DXVECTOR2(m_move.x * (nCntUninit + 1.0f), 0),
-				D3DXVECTOR2(m_move.x * (nCntUninit + 1.0f), 0));
+			m_apScene2D[nCntUpdate]->InitScroll(nCntUpdate, (float)nCntUpdate);
 		}
 	}
 	break;
 
 	case CManager::MODE_RESULT:
 		//背景のテクスチャ座標設定
-		for (int nCntUninit = 0; nCntUninit < MAX_BG_TEXTURE; nCntUninit++)
+		for (int nCntUpdate = 0; nCntUpdate < MAX_BG_TEXTURE; nCntUpdate++)
 		{
-			if (m_apScene2D[nCntUninit] != NULL)
+			if (m_apScene2D[nCntUpdate] != NULL)
 			{
-
 				m_move += D3DXVECTOR3(0.001f, 0, 0);//移動量
 				//背景をm_nPatternAnimで数を動かしてアニメーションする。
-				m_apScene2D[nCntUninit]->SetTex(D3DXVECTOR2((m_move.x * (nCntUninit + 1.0f)), 0),
-					D3DXVECTOR2((m_move.x * (nCntUninit + 1.0f) + 1.0f), 0));
+				m_apScene2D[nCntUpdate]->InitScroll(nCntUpdate, (float)nCntUpdate);
 			}
 		}
 		break;

@@ -18,8 +18,8 @@
 class CScene
 {
 public:
-	//構造体定義(種類)
-	typedef enum
+	//オブジェクトタイプ
+	enum OBJTYPE
 	{
 		OBJTYPE_NONE = 0,	//何もない
 		OBJTYPE_CURSOR,		//カーソル
@@ -36,9 +36,21 @@ public:
 		OBJTYPE_PAUSE,		//ポーズ画面
 		OBJTYPE_COMBOUI,	//コンボUI
 		OBJTYPE_MAX			//最大数
-	}OBJTYPE;
+	};
 
-	CScene(int nPriority = 0);			//コンストラクタ
+	enum PRIORITY
+	{
+		PRIORITY_0 = 0,
+		PRIORITY_1,
+		PRIORITY_MODEL,		 // 背景
+		PRIORITY_3D_UI,		 // 敵
+		PRIORITY_SCREENFRAME,// エフェクト
+		PRIORITY_UI,		 // UI
+		PRIORITY_BUTTON,	// フェード
+		PRIORITY_FADE,		 //プレイヤー
+		PRIORITY_MAX		 // 優先順位の最大数
+	};
+	CScene(int nPriority = PRIORITY_0);			//コンストラクタ
 	virtual~CScene();					//デストラクタ
 
 	//メンバ関数
