@@ -20,7 +20,7 @@ int					CFade::m_color = 0;				//色
 //*****************************************************************************
 //コンストラクタ
 //*****************************************************************************
-CFade::CFade(int nPriority) :CScene(nPriority)
+CFade::CFade(int nPriority) :CScene2D(nPriority)
 {
 	m_pos = D3DXVECTOR3(0, 0, 0);			// ポリゴンの位置
 	m_size = D3DXVECTOR3(0, 0, 0);			// ポリゴン大きさ
@@ -92,11 +92,10 @@ HRESULT CFade::Init()
 		if (m_pScene2D == NULL)
 		{
 			m_pScene2D = new CScene2D;
-			m_pScene2D->Init();
-			m_pScene2D->SetPosition(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));	//位置
-			m_pScene2D->SetSize(D3DXVECTOR3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));				//大きさ
+			m_pScene2D->Init(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0), 
+							D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
 			m_FadeState = FADESTATE_OUT;													//フェードの状態
-			m_pScene2D->BirdTexture(m_pTexture);											//テクスチャの情報
+			//BirdTexture(m_pTexture);											//テクスチャの情報
 			m_bSpeedFlash = true;																	//フェードのスイッチ
 			m_color = 0;																	//色
 		}
@@ -135,7 +134,7 @@ void CFade::Update(void)
 			if (m_bSpeedFlash == false)
 			{
 				//色を徐々に濃くしていく
-				m_pScene2D->SetColor(D3DCOLOR_RGBA(m_color,m_color,m_color,m_color));
+				SetColor(D3DCOLOR_RGBA(m_color,m_color,m_color,m_color));
 				m_color++;
 			}
 			//色の最大値まで行った場合
@@ -153,7 +152,7 @@ void CFade::Update(void)
 			if (m_bSpeedFlash == true)
 			{
 				//色を徐々に抜けていく
-				m_pScene2D->SetColor(D3DCOLOR_RGBA(255 - m_color, 255 - m_color, 255 - m_color, 255 - m_color));
+				SetColor(D3DCOLOR_RGBA(255 - m_color, 255 - m_color, 255 - m_color, 255 - m_color));
 				m_color++;
 			}
 			//色の最大値まで行った場合

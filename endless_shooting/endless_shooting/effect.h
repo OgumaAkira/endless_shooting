@@ -40,7 +40,7 @@ public:
 	static CEffect *Create(D3DXVECTOR3 pos, D3DXVECTOR3 size,D3DXCOLOR col, D3DXVECTOR3 move, int type);	//クリエイト関数
 	void Smoke(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 move, D3DXCOLOR col);
 	void ClickEffect(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 move, D3DXCOLOR col);
-	HRESULT Init(void);												//初期化関数
+	HRESULT Init(D3DXVECTOR3 pos, D3DXVECTOR3 size);												//初期化関数
 	void Uninit(void);												//終了関数
 	void Update(void);												//更新関数
 	void Draw(void);												//描画関数

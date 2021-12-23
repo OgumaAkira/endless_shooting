@@ -9,11 +9,14 @@
 //マクロ定義
 //*****************************************************************************
 #define _CRT_SECURE_NO_WARNINGS
+
 //*****************************************************************************
 //インクルードファイル
 //*****************************************************************************
-#include <stdio.h>
 #include "score.h"
+#include "number.h"
+#include "hiscore.h"
+#include "game.h"
 
 //*****************************************************************************
 //静的メンバ変数
@@ -23,11 +26,8 @@ int			CScore::m_nScore = 0;
 //*****************************************************************************
 //コンストラクタ
 //*****************************************************************************
-CScore::CScore(int nPriority) :CScene(nPriority)
+CScore::CScore(int nPriority) :CScene2D(nPriority)
 {
-	//m_move = VECTOR3_DEFAULT;			//移動量
-	//m_pos = VECTOR3_DEFAULT;			// ポリゴンの位置
-	//m_size = VECTOR3_DEFAULT;			// ポリゴン大きさ
 	m_nScore = 0;							//スコア
 	for (int nCount = 0; nCount < MAX_SCORE_NUMBER; nCount++)
 	{

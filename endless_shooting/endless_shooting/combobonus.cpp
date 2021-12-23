@@ -26,7 +26,7 @@ int			CComboBonus::m_nScore = 0;
 //*****************************************************************************
 //コンストラクタ
 //*****************************************************************************
-CComboBonus::CComboBonus(int nPriority) :CScene(nPriority)
+CComboBonus::CComboBonus()
 {
 	m_move = VECTOR3_DEFAULT;			//移動量
 	m_pos = VECTOR3_DEFAULT;			// ポリゴンの位置

@@ -57,9 +57,9 @@ CSpeed * CSpeed::Create(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 //*****************************************************************************
 HRESULT CSpeed::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 {
-	CScene2D::Init();
+	CScene2D::Init(pos, size);
 	m_pos = D3DXVECTOR3(pos.x, pos.y, 0);	//位置
-	SetPosition(m_pos);
+	SetPos(m_pos);
 	m_size = D3DXVECTOR3(size.x, size.y, 0);	//大きさ
 	SetSize(m_size);
 	m_Cnt = 5;
@@ -67,7 +67,7 @@ HRESULT CSpeed::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 	//サウンド取得
 	pSound = CManager::GetSound();
 	//テクスチャの情報をscene2dに持ってく
-	BirdTexture(m_pTexture);
+	//BirdTexture(m_pTexture);
 	return S_OK;
 }
 
@@ -84,13 +84,13 @@ void CSpeed::Uninit(void)
 //*****************************************************************************
 void CSpeed::Update(void)
 {
-	m_pos = GetPosition();
+	m_pos = GetPos();
 	CScene2D::Update();
 	if (m_bUse == true)
 	{
 		if (m_bUse2 == true)
 		{
-			pSound->PlaySound(CSound::SOUND_LABEL_SE_SPEEDUP);
+			//pSound->Play(CSound::SOUND_LABEL_SE_SPEEDUP);
 			m_bUse2 = false;
 		}
 		m_nFrameCnt++;

@@ -9,6 +9,9 @@
 //インクルードファイル
 //*****************************************************************************
 #include "bulletUI.h"
+#include "game.h"
+#include "renderer.h"
+#include "scenebase.h"
 
 //*****************************************************************************
 //静的メンバ変数
@@ -19,7 +22,7 @@ bool				CBulletUI::m_bSpeedFlash = false;		//残弾表示スイッチ
 //*****************************************************************************
 //コンストラクタ
 //*****************************************************************************
-CBulletUI::CBulletUI(int nPriority) : CScene(nPriority)
+CBulletUI::CBulletUI()
 {
 	m_pos = D3DXVECTOR3(0, 0, 0);			// ポリゴンの位置
 	m_size = D3DXVECTOR3(0, 0, 0);			// ポリゴン大きさ
@@ -95,11 +98,10 @@ HRESULT CBulletUI::Init()
 		if (m_apScene2D[nCntInit] == NULL)
 		{
 			m_apScene2D[nCntInit] = new CScene2D;
-			m_apScene2D[nCntInit]->Init();
-			m_apScene2D[nCntInit]->SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
-			m_apScene2D[nCntInit]->SetPosition(D3DXVECTOR3(SCREEN_WIDTH/1.03f - 50.0f * nCntInit,100,0));
-			m_apScene2D[nCntInit]->SetSize(D3DXVECTOR3(50.0f, 100, 0));
-			m_apScene2D[nCntInit]->BirdTexture(m_pTexture);
+			m_apScene2D[nCntInit]->Init(D3DXVECTOR3(SCREEN_WIDTH / 1.03f - 50.0f * nCntInit, 100, 0),
+										D3DXVECTOR3(50.0f, 100, 0));
+			SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
+			//m_apScene2D[nCntInit]->BirdTexture(m_pTexture);
 
 		}
 	}
@@ -133,7 +135,7 @@ void CBulletUI::Update(void)
 {
 	if (m_bSpeedFlash == true)
 	{
-		m_apScene2D[m_BulletCnt]->SetColor(D3DCOLOR_RGBA(0, 0, 0, 0));
+		SetColor(D3DCOLOR_RGBA(0, 0, 0, 0));
 		m_bSpeedFlash = false;
 		if (CGame::GetGameState() == CGame::GAMESTATE_NORMAL)
 		{
@@ -141,7 +143,7 @@ void CBulletUI::Update(void)
 		}
 	}
 	else if (m_BulletCnt == MAX_BULLET &&
-		CGame::GetEnemy() >= 0 &&
+		/*CGame::GetEnemy() >= 0 &&*/
 		CGame::GetGameState() == CGame::GAMESTATE_NORMAL)
 	{
 		CGame::SetGameState(CGame::GAMESTATE_END);
@@ -171,7 +173,7 @@ void CBulletUI::Loading(void)
 	for (int nCnt = 0; nCnt < MAX_BULLET; nCnt++)
 	{
 		//装填
-		m_apScene2D[nCnt]->SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
+		SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
 	}
 	m_BulletCnt = 0;
 }

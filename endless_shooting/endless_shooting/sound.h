@@ -23,12 +23,12 @@ public:
 	typedef enum
 	{
 		SOUND_LABEL_TITLEBGM = 0,			// TITLEBGM
-		SOUND_LABEL_GAMEBGM,				// GAMEBGM
-		SOUND_LABEL_RESULTBGM,				// RESULTBGM
-		SOUND_LABEL_SE_SHOT,				// 弾発射音
-		SOUND_LABEL_SE_BUTTON,				// ヒット音
-		SOUND_LABEL_SE_EXPLOSION,			// 爆発音
-		SOUND_LABEL_SE_SPEEDUP,				// スピードアップ
+		//SOUND_LABEL_GAMEBGM,				// GAMEBGM
+		//SOUND_LABEL_RESULTBGM,				// RESULTBGM
+		//SOUND_LABEL_SE_SHOT,				// 弾発射音
+		//SOUND_LABEL_SE_BUTTON,				// ヒット音
+		//SOUND_LABEL_SE_EXPLOSION,			// 爆発音
+		//SOUND_LABEL_SE_SPEEDUP,				// スピードアップ
 		SOUND_LABEL_MAX,					//最大数
 	}SOUND_LABEL;
 
@@ -36,11 +36,12 @@ public:
 	~CSound();								//デストラクタ
 
 	//メンバ関数
-	HRESULT InitSound(HWND hWnd);			//初期化関数
-	void UninitSound(void);					//終了関数
-	HRESULT PlaySound(SOUND_LABEL label);	//再生関数
-	void StopSound(SOUND_LABEL label);		//停止関数
-	void StopSoundTo(void);					//一時停止関数
+	static CSound *Create(void);		//インスタンス生成
+	HRESULT Init(void);			//初期化関数
+	void Uninit(void);					//終了関数
+	HRESULT Play(SOUND_LABEL label);	//再生関数
+	void Stop(SOUND_LABEL label);		//停止関数
+	void StopAll(void);					//一時停止関数
 
 private:
 	//メンバ変数

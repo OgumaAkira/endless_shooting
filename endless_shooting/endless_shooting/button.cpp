@@ -109,14 +109,10 @@ void CButton::UnLoad(void)
 //*****************************************************************************
 HRESULT CButton::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size, BUTTONTYPE type)
 {
-	CScene2D::Init();
-	m_pos = D3DXVECTOR3(pos.x, pos.y, 0);		//位置取得
-	SetPosition(m_pos);							//位置格納
-	m_size = D3DXVECTOR3(size.x, size.y, 0);	//大きさ取得
-	SetSize(m_size);							//大きさ格納
+	CScene2D::Init(pos, size);
 	m_bButton = true;							//ボタンの状態
 	m_state = BUTTONSTATE_NORMAL;				//初期状態
-	BirdTexture(m_apTexture[type]);				//テクスチャの情報をscene2dへ格納
+	//BirdTexture(m_apTexture[type]);				//テクスチャの情報をscene2dへ格納
 	return S_OK;
 }
 
@@ -145,7 +141,7 @@ void CButton::Update(void)
 		if (m_bButton == true)
 		{
 			//SE
-			pSound->PlaySound(CSound::SOUND_LABEL_SE_BUTTON);
+		//	pSound->Play(CSound::SOUND_LABEL_SE_BUTTON);
 			m_bButton = false;
 		}
 			//色の変更
@@ -158,7 +154,7 @@ void CButton::Update(void)
 		if (m_bButton == true)
 		{
 			//SE
-			pSound->PlaySound(CSound::SOUND_LABEL_SE_BUTTON);
+		//	pSound->Play(CSound::SOUND_LABEL_SE_BUTTON);
 			m_bButton = false;
 		}
 		//色の変更
@@ -175,7 +171,7 @@ void CButton::Update(void)
 	case BUTTONSTATE_PAUSEGAME:
 		//色の変更
 		SetColor(D3DCOLOR_RGBA(255, 0, 0, 255));//赤	
-		pSound->PlaySound(CSound::SOUND_LABEL_GAMEBGM);
+		//pSound->Play(CSound::SOUND_LABEL_GAMEBGM);
 		CManager::SetMode(CManager::MODE_GAME);
 		break;
 

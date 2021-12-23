@@ -31,7 +31,7 @@ public:
 	enum TEXTURE_TYPE
 	{
 		TEXTURE_NUM_NONE = -1,			// 初期値
-		TEXTURE_NUM_BULLET,				//弾
+		TEXTURE_NUM_PLAYER,				//プレイヤー
 		TEXTURE_NUM_MAX
 	};
 

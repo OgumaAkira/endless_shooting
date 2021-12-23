@@ -57,18 +57,14 @@ CComboUI * CComboUI::Create(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 //*****************************************************************************
 HRESULT CComboUI::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 {
-	CScene2D::Init();
-	m_pos = D3DXVECTOR3(pos.x, pos.y, 0);	//位置
-	SetPosition(m_pos);
-	m_size = D3DXVECTOR3(size.x, size.y, 0);	//大きさ
-	SetSize(m_size);
+	CScene2D::Init(pos, size);
 	m_nColor = 0;
 	SetColor(D3DXCOLOR(0, 0, 0, 0));
 	m_nComboCountFrame = 0;
 	//サウンド取得
 	pSound = CManager::GetSound();
 	//テクスチャの情報をscene2dに持ってく
-	BirdTexture(m_pTexture);
+	//BirdTexture(m_pTexture);
 	return S_OK;
 }
 
