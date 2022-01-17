@@ -88,7 +88,7 @@ void CMode::Uninit(void)
 		m_pModeBase->Uninit(this);
 	}
 	CScene::ReleaseAll();
-	m_pModeBase == nullptr;
+	m_pModeBase = nullptr;
 }
 
 //*****************************************************************************

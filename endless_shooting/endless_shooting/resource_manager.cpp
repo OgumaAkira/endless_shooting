@@ -49,7 +49,7 @@ HRESULT CResourceManager::Init(void)
 	//NULLチェック
 	if (m_pSound== nullptr)
 	{
-		m_pSound == CSound::Create();
+		m_pSound = CSound::Create();
 	}
 	return E_NOTIMPL;
 }
